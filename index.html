@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성경구절 PPT 제작 프로그램</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 기본 한글 폰트들 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- 나눔 시리즈 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+    <!-- 귀여운 폰트들 -->
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Gamja+Flower&family=Hi+Melody&family=Cute+Font&display=swap" rel="stylesheet">
+    <!-- 스타일리시 폰트들 -->
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+    <!-- 나눔스퀘어 (엑스트라볼드 포함) -->
+    <link href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 메인 컨트롤 패널 -->
+        <div id="control-panel" class="control-panel">
+            <div class="header">
+                <div class="header-content">
+                    <h1><i class="fas fa-bible"></i> 성경구절 PPT 제작 프로그램</h1>
+                    <p>개역개정 성경구절 피피티를 제작할 수 있습니다</p>
+                </div>
+                <div class="program-info">
+                    <span class="developer">프로그램 제작 : 성결미디어연구소</span>
+                    <span class="version">버전 2.2.0</span>
+                </div>
+            </div>
+            
+            <div class="input-section">
+                <!-- 입력 모드 선택 - 맨 위로 이동 -->
+                <div class="input-mode-selector">
+                    <h4><i class="fas fa-list-ul"></i> 생성 모드 선택</h4>
+                    <div class="mode-options">
+                        <label class="radio-option">
+                            <input type="radio" name="input-mode" value="single" checked>
+                            <span class="radio-custom"></span>
+                            단일 구절
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="input-mode" value="range">
+                            <span class="radio-custom"></span>
+                            구간 구절
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="input-mode" value="chapter">
+                            <span class="radio-custom"></span>
+                            장 전체
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="input-mode" value="direct">
+                            <span class="radio-custom"></span>
+                            직접 입력
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="verse-input">
+                    <label for="book-select">성경책:</label>
+                    <select id="book-select">
+                        <option value="">성경책 선택</option>
+                        <option value="창세기">창세기</option>
+                        <option value="출애굽기">출애굽기</option>
+                        <option value="레위기">레위기</option>
+                        <option value="민수기">민수기</option>
+                        <option value="신명기">신명기</option>
+                        <option value="여호수아">여호수아</option>
+                        <option value="사사기">사사기</option>
+                        <option value="룻기">룻기</option>
+                        <option value="사무엘상">사무엘상</option>
+                        <option value="사무엘하">사무엘하</option>
+                        <option value="열왕기상">열왕기상</option>
+                        <option value="열왕기하">열왕기하</option>
+                        <option value="역대상">역대상</option>
+                        <option value="역대하">역대하</option>
+                        <option value="에스라">에스라</option>
+                        <option value="느헤미야">느헤미야</option>
+                        <option value="에스더">에스더</option>
+                        <option value="욥기">욥기</option>
+                        <option value="시편">시편</option>
+                        <option value="잠언">잠언</option>
+                        <option value="전도서">전도서</option>
+                        <option value="아가">아가</option>
+                        <option value="이사야">이사야</option>
+                        <option value="예레미야">예레미야</option>
+                        <option value="예레미야애가">예레미야애가</option>
+                        <option value="에스겔">에스겔</option>
+                        <option value="다니엘">다니엘</option>
+                        <option value="호세아">호세아</option>
+                        <option value="요엘">요엘</option>
+                        <option value="아모스">아모스</option>
+                        <option value="오바댜">오바댜</option>
+                        <option value="요나">요나</option>
+                        <option value="미가">미가</option>
+                        <option value="나훔">나훔</option>
+                        <option value="하박국">하박국</option>
+                        <option value="스바냐">스바냐</option>
+                        <option value="학개">학개</option>
+                        <option value="스가랴">스가랴</option>
+                        <option value="말라기">말라기</option>
+                        <option value="마태복음">마태복음</option>
+                        <option value="마가복음">마가복음</option>
+                        <option value="누가복음">누가복음</option>
+                        <option value="요한복음">요한복음</option>
+                        <option value="사도행전">사도행전</option>
+                        <option value="로마서">로마서</option>
+                        <option value="고린도전서">고린도전서</option>
+                        <option value="고린도후서">고린도후서</option>
+                        <option value="갈라디아서">갈라디아서</option>
+                        <option value="에베소서">에베소서</option>
+                        <option value="빌립보서">빌립보서</option>
+                        <option value="골로새서">골로새서</option>
+                        <option value="데살로니가전서">데살로니가전서</option>
+                        <option value="데살로니가후서">데살로니가후서</option>
+                        <option value="디모데전서">디모데전서</option>
+                        <option value="디모데후서">디모데후서</option>
+                        <option value="디도서">디도서</option>
+                        <option value="빌레몬서">빌레몬서</option>
+                        <option value="히브리서">히브리서</option>
+                        <option value="야고보서">야고보서</option>
+                        <option value="베드로전서">베드로전서</option>
+                        <option value="베드로후서">베드로후서</option>
+                        <option value="요한일서">요한일서</option>
+                        <option value="요한이서">요한이서</option>
+                        <option value="요한삼서">요한삼서</option>
+                        <option value="유다서">유다서</option>
+                        <option value="요한계시록">요한계시록</option>
+                    </select>
+                </div>
+                
+                <div class="verse-input">
+                    <label for="chapter">장:</label>
+                    <input type="number" id="chapter" min="1" placeholder="장 번호">
+                </div>
+                
+                <!-- 단일 구절 입력 -->
+                <div id="single-verse-input" class="verse-input-group">
+                    <div class="verse-input">
+                        <label for="verse">절:</label>
+                        <input type="number" id="verse" min="1" placeholder="절 번호">
+                    </div>
+                </div>
+                
+                <!-- 구간 구절 입력 -->
+                <div id="range-verse-input" class="verse-input-group hidden">
+                    <div class="verse-range">
+                        <div class="verse-input">
+                            <label for="start-verse">시작 절:</label>
+                            <input type="number" id="start-verse" min="1" placeholder="시작 절">
+                        </div>
+                        <div class="range-separator">~</div>
+                        <div class="verse-input">
+                            <label for="end-verse">끝 절:</label>
+                            <input type="number" id="end-verse" min="1" placeholder="끝 절">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 장 전체 입력 -->
+                <div id="chapter-input" class="verse-input-group hidden">
+                    <div class="chapter-info">
+                        <div class="info-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="chapter-description">
+                            <h4>장 전체 생성</h4>
+                            <p>선택한 성경책의 해당 장에 있는 모든 구절을 자동으로 슬라이드로 생성합니다.</p>
+                            <small>* 장의 구절 수에 따라 생성 시간이 다를 수 있습니다.</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 직접 입력 -->
+                <div id="direct-input" class="verse-input-group hidden">
+                    <div class="direct-input-container">
+                        <div class="verse-input">
+                            <label for="direct-verse-input">성경 구절 입력:</label>
+                            <input type="text" id="direct-verse-input" placeholder="성경 구절을 직접 입력하세요">
+                        </div>
+                        <div class="input-examples">
+                            <div class="example-section">
+                                <h6><i class="fas fa-lightbulb"></i> 입력 예시</h6>
+                                <div class="examples">
+                                    <div class="example-item">
+                                        <strong>단일 구절:</strong>
+                                        <span class="example-text">창 1:1</span>
+                                        <span class="example-text">요 3:16</span>
+                                        <span class="example-text">시 23:1</span>
+                                    </div>
+                                    <div class="example-item">
+                                        <strong>구간 구절:</strong>
+                                        <span class="example-text">창 1:1~4</span>
+                                        <span class="example-text">창 1:1-4</span>
+                                        <span class="example-text">요 3:16~18</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="auto-generate-info">
+                    <div class="info-box">
+                        <i class="fas fa-magic"></i>
+                        <div class="info-content">
+                            <h4>자동 생성 모드</h4>
+                            <p>성경책과 장절 정보만 입력하면 자동으로 슬라이드가 생성됩니다.</p>
+                            <small>* 구절 내용은 개역개정 성경을 기준으로 표시됩니다.</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 슬라이드 생성 버튼 -->
+                <div class="button-group">
+                    <button id="generate-slides" class="btn btn-primary">
+                        <i class="fas fa-magic"></i> <span id="generate-btn-text">슬라이드 생성</span>
+                    </button>
+                    <button id="clear-slides" class="btn btn-secondary">
+                        <i class="fas fa-trash"></i> 모두 지우기
+                    </button>
+                </div>
+                
+                <!-- 추가된 슬라이드 목록 -->
+                <div class="slides-list">
+                    <h3>추가된 슬라이드</h3>
+                    <div id="slides-container">
+                        <!-- 슬라이드 목록이 여기에 표시됩니다 -->
+                    </div>
+                </div>
+                
+                <!-- PPT 스타일 설정 -->
+                <div class="ppt-style-section">
+                    <h4><i class="fas fa-paint-brush"></i> PPT 스타일 설정</h4>
+                    
+                    <!-- 배경 설정 -->
+                    <div class="background-settings">
+                        <h5><i class="fas fa-image"></i> 배경 설정</h5>
+                        <div class="background-options">
+                            <label class="radio-option background-radio">
+                                <input type="radio" name="background-type" value="color" checked>
+                                <span class="radio-custom"></span>
+                                배경색
+                            </label>
+                            <label class="radio-option background-radio">
+                                <input type="radio" name="background-type" value="image">
+                                <span class="radio-custom"></span>
+                                배경 이미지
+                            </label>
+                        </div>
+                        
+                        <!-- 배경색 설정 -->
+                        <div id="color-background-setting" class="background-setting-group">
+                            <div class="color-control">
+                                <label for="bg-color">배경색:</label>
+                                <input type="color" id="bg-color" value="#000000">
+                                <span class="color-preview" id="bg-preview"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- 배경 이미지 설정 -->
+                        <div id="image-background-setting" class="background-setting-group hidden">
+                            <div class="image-upload-control">
+                                <label for="bg-image">배경 이미지:</label>
+                                <input type="file" id="bg-image" accept="image/*">
+                                <button type="button" id="clear-bg-image" class="btn-clear-image">
+                                    <i class="fas fa-times"></i> 이미지 제거
+                                </button>
+                            </div>
+                            <div id="image-preview-container" class="image-preview-container hidden">
+                                <img id="image-preview" src="" alt="배경 이미지 미리보기">
+                                <div class="image-info">
+                                    <span id="image-name"></span>
+                                    <span id="image-size"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 텍스트 설정 -->
+                    <div class="text-settings">
+                        <h5><i class="fas fa-font"></i> 텍스트 설정</h5>
+                        
+                        <!-- 글씨 색상 -->
+                        <div class="color-control">
+                            <label for="text-color">글씨색:</label>
+                            <input type="color" id="text-color" value="#ffffff">
+                            <span class="color-preview" id="text-preview"></span>
+                        </div>
+                        
+                        <!-- 텍스트 정렬 -->
+                        <div class="setting-group">
+                            <label class="setting-label">텍스트 정렬:</label>
+                            <div class="alignment-options">
+                                <label class="radio-option alignment-radio">
+                                    <input type="radio" name="text-align" value="left">
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-align-left"></i> 왼쪽
+                                </label>
+                                <label class="radio-option alignment-radio">
+                                    <input type="radio" name="text-align" value="center" checked>
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-align-center"></i> 중앙
+                                </label>
+                                <label class="radio-option alignment-radio">
+                                    <input type="radio" name="text-align" value="right">
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-align-right"></i> 오른쪽
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- 폰트 선택 -->
+                        <div class="setting-group">
+                            <label class="setting-label">폰트 선택:</label>
+                            <div class="font-control">
+                                <select id="font-family" class="font-selector">
+                                    <optgroup label="📖 기본 폰트">
+                                        <option value="Nanum Gothic" selected>나눔고딕</option>
+                                        <option value="NanumSquare">나눔스퀘어</option>
+                                        <option value="Nanum Myeongjo">나눔명조</option>
+                                        <option value="Noto Sans KR">노토 산스</option>
+                                        <option value="맑은 고딕">맑은 고딕</option>
+                                    </optgroup>
+                                    <optgroup label="✋ 손글씨">
+                                        <option value="Nanum Pen Script">나눔손글씨</option>
+                                        <option value="Nanum Brush Script">나눔붓글씨</option>
+                                    </optgroup>
+                                    <optgroup label="🌸 귀여운 폰트">
+                                        <option value="Jua">주아체</option>
+                                        <option value="Gamja Flower">감자꽃체</option>
+                                        <option value="Hi Melody">하이멜로디</option>
+                                        <option value="Cute Font">큐트 폰트</option>
+                                    </optgroup>
+                                    <optgroup label="💪 강조 폰트">
+                                        <option value="Black Han Sans">검은고딕</option>
+                                        <option value="Do Hyeon">도현체</option>
+                                        <option value="Stylish">스타일리시</option>
+                                    </optgroup>
+                                </select>
+                                <div class="font-weight-control">
+                                    <label class="setting-label">글씨 굵기:</label>
+                                    <div class="weight-options">
+                                        <label class="radio-option weight-radio">
+                                            <input type="radio" name="font-weight" value="normal">
+                                            <span class="radio-custom"></span>
+                                            보통
+                                        </label>
+                                        <label class="radio-option weight-radio">
+                                            <input type="radio" name="font-weight" value="bold" checked>
+                                            <span class="radio-custom"></span>
+                                            <i class="fas fa-bold"></i> 볼드
+                                        </label>
+                                        <label class="radio-option weight-radio">
+                                            <input type="radio" name="font-weight" value="900">
+                                            <span class="radio-custom"></span>
+                                            <i class="fas fa-font"></i> 엑스트라볼드
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 장절 표시 옵션 -->
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <input type="checkbox" id="show-reference" checked>
+                                <span class="checkbox-custom"></span>
+                                장절 참조 표시
+                            </label>
+                        </div>
+                        
+                        <!-- 절 번호 표시 옵션 -->
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <input type="checkbox" id="show-verse-number" checked>
+                                <span class="checkbox-custom"></span>
+                                구절 앞에 절 번호 표시 (예: "1. 태초에...")
+                            </label>
+                        </div>
+                        
+                        <!-- 텍스트 크기 설정 -->
+                        <div class="setting-group">
+                            <label class="setting-label">텍스트 크기:</label>
+                            <div class="size-control">
+                                <label for="reference-size">장절 참조 크기:</label>
+                                <input type="range" id="reference-size" min="16" max="40" value="24" step="2">
+                                <span id="reference-size-value">24pt</span>
+                            </div>
+                            <div class="size-control">
+                                <label for="verse-size">구절 텍스트 크기:</label>
+                                <input type="range" id="verse-size" min="20" max="48" value="32" step="2">
+                                <span id="verse-size-value">32pt</span>
+                            </div>
+                            <div class="size-control">
+                                <label for="line-spacing">줄간격:</label>
+                                <input type="range" id="line-spacing" min="0" max="200" value="100" step="1">
+                                <span id="line-spacing-value">100%</span>
+                            </div>
+                            <div class="size-control">
+                                <label for="char-spacing">자간:</label>
+                                <input type="range" id="char-spacing" min="-5" max="20" value="0" step="1">
+                                <span id="char-spacing-value">0pt</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 레이아웃 설정 -->
+                    <div class="layout-settings">
+                        <h5><i class="fas fa-expand-arrows-alt"></i> 레이아웃 설정</h5>
+                        
+                        <!-- 텍스트 영역 너비 -->
+                        <div class="setting-group">
+                            <div class="size-control">
+                                <label for="text-width-slider">텍스트 영역 너비:</label>
+                                <input type="range" id="text-width-slider" min="30" max="100" value="90" step="5">
+                                <span id="text-width-value">90%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 텍스트 영역 위치 -->
+                        <div class="setting-group">
+                            <label class="setting-label">텍스트 위치:</label>
+                            <div class="position-options">
+                                <label class="radio-option position-radio">
+                                    <input type="radio" name="text-position" value="center" checked>
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-arrows-alt-h"></i> 중앙
+                                </label>
+                                <label class="radio-option position-radio">
+                                    <input type="radio" name="text-position" value="top">
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-arrow-up"></i> 상단
+                                </label>
+                                <label class="radio-option position-radio">
+                                    <input type="radio" name="text-position" value="left">
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-arrow-left"></i> 왼쪽
+                                </label>
+                                <label class="radio-option position-radio">
+                                    <input type="radio" name="text-position" value="right">
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-arrow-right"></i> 오른쪽
+                                </label>
+                                <label class="radio-option position-radio">
+                                    <input type="radio" name="text-position" value="bottom">
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-arrow-down"></i> 하단
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- 세로 위치 조절 (하단 선택 시만 표시) -->
+                        <div class="setting-group" id="vertical-position-setting" style="display: none;">
+                            <div class="size-control">
+                                <label for="vertical-position-slider">세로 위치:</label>
+                                <input type="range" id="vertical-position-slider" min="20" max="80" value="50" step="5">
+                                <span id="vertical-position-value">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 템플릿 저장/불러오기 -->
+                    <div class="template-settings">
+                        <h5><i class="fas fa-save"></i> 템플릿 관리</h5>
+                        
+                        <!-- 새 템플릿 저장 -->
+                        <div class="new-template-section">
+                            <div class="template-name-input">
+                                <input type="text" id="template-name" placeholder="템플릿 이름 입력" maxlength="30">
+                                <button type="button" id="save-new-template" class="btn btn-template">
+                                    <i class="fas fa-plus"></i> 새 템플릿 저장
+                                </button>
+                            </div>
+                            <button type="button" id="save-template" class="btn btn-template-secondary">
+                                <i class="fas fa-save"></i> 기본 설정으로 저장
+                            </button>
+                        </div>
+                        
+                        <!-- 저장된 템플릿 목록 -->
+                        <div class="template-list-section">
+                            <h6><i class="fas fa-list"></i> 저장된 템플릿</h6>
+                            <div id="template-list" class="template-list">
+                                <!-- 템플릿 목록이 여기에 표시됩니다 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="presentation-controls">
+                <button id="start-presentation" class="btn btn-success">
+                    <i class="fas fa-play"></i> 프레젠테이션 시작
+                </button>
+                <button id="download-ppt" class="btn btn-primary">
+                    <i class="fas fa-download"></i> PPT 다운로드
+                </button>
+            </div>
+        </div>
+        
+        <!-- 프레젠테이션 모드 -->
+        <div id="presentation-mode" class="presentation-mode hidden">
+            <div class="slide-container">
+                <div class="slide-content">
+                    <div class="verse-text" id="current-verse-text"></div>
+                    <div class="verse-reference" id="current-verse-reference"></div>
+                </div>
+            </div>
+            
+            <div class="presentation-controls-overlay">
+                <button id="prev-slide" class="nav-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span id="slide-counter">1 / 1</span>
+                <button id="next-slide" class="nav-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button id="exit-presentation" class="exit-btn">
+                    <i class="fas fa-times"></i> 종료
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
